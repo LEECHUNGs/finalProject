@@ -1,4 +1,4 @@
-package kr.co.wheelingcamp.board.dto;
+package kr.co.wheelingcamp.board.model.dto;
 
 import groovy.transform.ToString;
 import groovy.transform.builder.Builder;
