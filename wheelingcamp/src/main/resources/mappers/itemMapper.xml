@@ -50,24 +50,34 @@
 		NATURAL JOIN EQUIPMENT_CATEGORY 
 		WHERE ITEM_NO = #{itemNo}
 	</select>
-
-<!--	패키지 한 개 가져오기
+<!--
+	패키지 한 개 가져오기
 	<select id="selectOnePackage" resultMap="package_rm">
-		SELECT PACKAGE_PRICE, PACKAGE_ITEM_COUNT FROM "PACKAGE" 
-		NATURAL JOIN PACKAGE_DETAIL WHERE PACKAGE_NO = #{itemNo}
+		SELECT PACKAGE_PRICE, PACKAGE_ITEM_COUNT,CAR_NAME, CAR_SLEEP_CAPACITY , CAR_PASSENGERS , CAR_RENT_PRICE , CAR_FUEL , 
+            IMG_PATH || IMG_RENAME "THUMBNAIL" FROM "PACKAGE"
+			NATURAL JOIN PACKAGE_DETAIL 
+			NATURAL JOIN ITEM 
+			NATURAL JOIN CAR 
+			  LEFT JOIN ITEM_IMG USING(ITEM_NO)
+      <![CDATA[
+         WHERE ITEM_NO IN (SELECT DISTINCT CS.ITEM_NO
+                        FROM CAR_STOCK CS
+                        LEFT JOIN RENT_DETAIL USING (CAR_STOCK_NO)
+                        LEFT JOIN RENT USING (RENT_NO)
+                        WHERE (RENT_DATE > '2024-06-14'
+                        OR EXPECT_DATE < '2024-06-01'
+                        OR RENT_DETAIL_NO IS NULL)
+                        AND CAR_LOCATION_NO = #{carLocationNo})
+      ]]>
+      AND IMG_ORDER = 0 AND PACKAGE_NO = #{itemNo}
 	</select>
 
 	<select id="selectOnePackageItemList" resultType="Item">
 		SELECT EQUIPMENT_NAME, EQUIPMENT_CATEGORY_NAME, EQUIPMENT_RENT_PRICE FROM CAMP_EQUIPMENT
-		NATURAL_JOIN ITEM A
 		NATURAL JOIN EQUIPMENT_CATEGORY
-		LEFT JOIN PACKAGE ON (A.ITEM_NO = PACKAGE_NO)
-		WHERE PACKAGE
+		WHERE ITEM_NO IN (SELECT ITEM_NO FROM PACKAGE_DETAIL  WHERE PACKAGE_NO = #{itemNo})
 	</select>-->
 	
-	<!-- 모든 자동차 목록 탐색 -->
-	<select id="selectCampEquipmentAll">
-	</select>
 	<select id="selectCarAll">
 		SELECT ITEM_NO, CATEGORY_CODE, CATEGORY_NAME, ITEM_VIEW_COUNT , CAR_NAME , 
 				CAR_SLEEP_CAPACITY , CAR_PASSENGERS , CAR_RENT_PRICE , CAR_FUEL , 
@@ -112,16 +122,40 @@
 			</if>
 	</select>
 
-<!--	 
-모든 캠핑용품 목록 탐색 
+  <!--모든 캠핑용품 목록 탐색 -->
 	<select id="selectCampEquipmentAll">
-		
-	</select>  -->
+		SELECT ITEM_NO, CATEGORY_CODE, CATEGORY_NAME, ITEM_VIEW_COUNT,
+				EQUIPMENT_CATEGORY_CODE, EQUIPMENT_CATEGORY_NAME, EQUIPMENT_NAME,
+				EQUIPMENT_RENT_PRICE, EQUIPMENT_RENT_COUNT,
+				EQUIPMENT_SELL_PRICE, EQUIPMENT_SELL_COUNT,
+				IMG_PATH || IMG_RENAME "THUMBNAIL"
+		FROM CAMP_EQUIPMENT
+		JOIN EQUIPMENT_CATEGORY USING (EQUIPMENT_CATEGORY_CODE)
+		JOIN ITEM USING (ITEM_NO)
+		JOIN ITEM_CATEGORY USING (CATEGORY_CODE)
+		LEFT JOIN ITEM_IMG USING(ITEM_NO)
+	</select>
 	
 	<!-- 모든 패키지 목록 탐색 -->
-	<!-- <select id="selectPackageAll">
-				
-	</select> -->
+	<select id="selectPackageAll">
+		SELECT I.ITEM_NO, I.CATEGORY_CODE, CATEGORY_NAME, ITEM_VIEW_COUNT ,
+				P.PACKAGE_PRICE
+		FROM PACKAGE P
+		JOIN ITEM I ON (P.PACKAGE_NO = I.ITEM_NO)
+		JOIN ITEM_CATEGORY IC ON (IC.CATEGORY_CODE = I.CATEGORY_CODE)
+		LEFT JOIN ITEM_IMG II ON (P.PACKAGE_NO = II.ITEM_NO)
+	</select>
 
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

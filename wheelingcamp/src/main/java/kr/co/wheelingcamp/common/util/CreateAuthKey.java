@@ -1,5 +1,8 @@
 package kr.co.wheelingcamp.common.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CreateAuthKey {
 	/**
 	 * 인증 코드 생성 (영어 대문자 + 소문자 + 숫자 6자리)

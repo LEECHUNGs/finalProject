@@ -50,6 +50,7 @@ public class ItemController {
 			@RequestParam(value = "carGradeNo", required = false, defaultValue = "0") int carGradeNo,
 			@RequestParam(value = "sortNo", required = false, defaultValue = "0") int sortNo, Model model) {
 
+		// Service에서 사용한 변수를 MAP에 세팅
 		Map<String, Object> map = new HashMap<>();
 		map.put("categoryCode", categoryCode);
 		map.put("carLocationNo", carLocationNo);
@@ -58,8 +59,10 @@ public class ItemController {
 		map.put("carGradeNo", carGradeNo);
 		map.put("sortNo", sortNo);
 
+		// 검색된 상품 목록을 가져옴
 		List<?> itemList = service.selectCategoryAll(map);
 
+		// 상품 목록을 종류에 따라 각각의 객체로 다운캐스팅후 request scope에 세팅
 		switch (categoryCode) {
 		case 1:
 			List<Car> carList = (List<Car>) itemList;

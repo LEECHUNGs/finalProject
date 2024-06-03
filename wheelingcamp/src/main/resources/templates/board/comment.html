@@ -1,0 +1,97 @@
+<div id="commentArea">
+  <!-- 댓글 목록 -->
+  <div class="commentArea-comment">
+   <i class="far fa-solid fa-comment-dots"></i>
+   <span>댓글쓰기</span> 
+</div>
+<!-- 댓글 작성 부분 -->
+<div class="comment-write-area">
+    
+      <th:block th:if="${session.loginMember != null and session.loginMember.memberNo== comment.memberNo}">
+         <img th:src="${board.profileImg}">
+      </th:block>
+
+   <textarea id="commentContent"></textarea>
+   <button id="addComment">
+      등록
+   </button>
+</div>
+
+
+  <div class="comment-list-area">
+
+     <ul id="commentList">
+
+        <!-- 대댓글(자식)인 경우 child-comment 클래스 추가 -->
+        <li class="comment-row" 
+              th:each="comment : ${board.commentList}" 
+              th:classappend="${comment.commentNo2} != 0 ? child-comment"
+              th:object="${comment}">
+
+           <th:block th:if="*{commentDelFl} == 'Y'">
+              삭제된 댓글 입니다
+           </th:block>
+
+           <th:block th:if="*{commentDelFl} == 'N'">
+              <!-- <p class="comment-writer">
+              
+  
+                 <span th:text="*{memberNickname}">닉네임</span>
+                 <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
+                 <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+             
+              </p> -->
+               <!-- comment-user-section -->
+              <section class="comment-user-section">
+              <!-- comment-user-section -->
+
+                   <div class="comment-user-section-first-div">   <!-- 프로필 이미지 없을 경우 -->
+                     <img th:unless="*{profileImg}" th:src="#{user.default.image}">
+                     <!-- 프로필 이미지 있을 경우 -->
+                     <img th:if="*{profileImg}" th:src="*{profileImg}"></div>
+
+                     <div class="comment-user-section-second-div">
+
+                          <div class="user-section-first-div-comment-content">
+                           <span th:text="*{memberNickname}">닉네임</span>
+                           <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
+                          </div>
+
+                          <div class="user-section-second-div-comment-content">
+                           <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+                          </div>
+
+<!-- <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}"> -->
+      <button th:onclick="|showUpdateComment(*{commentNo}, this)|" class="update-btn">수정</button>
+      <button th:onclick="|deleteComment(*{commentNo})|" class="delete-btn">삭제</button>
+      <button th:onclick="|showInsertComment(*{commentNo}, this)|" class="comment-child-btn">답글</button>
+                   
+<!-- </th:block> -->
+
+                          
+                          <!-- comment-user-section-first-div -->
+                     </div>
+                        <!-- comment-user-section-first-div -->
+  <!-- comment-user-section -->
+              </section>
+    <!-- comment-user-section -->
+  
+              <!-- 버튼 영역 -->
+              <div class="comment-btn-area">
+              
+  
+             
+           
+  
+              </div>
+           </th:block>
+
+        </li>
+
+     </ul>
+  </div>
+
+
+  
+
+</div>

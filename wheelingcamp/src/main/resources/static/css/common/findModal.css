@@ -1,0 +1,136 @@
+/* form */
+.auth-from {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 이름 입력 div */
+.form-memberName {
+  display: flex;
+  align-items: center;
+  background-color: #f9f7f0;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  height: 45px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.memberName-i {
+  padding-left: 20px;
+  flex-basis: 30%;
+  font-size: 25px;
+}
+
+.memberName-input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  flex-basis: 70%;
+  padding-right: 15px;
+}
+
+.memberName-input::placeholder {
+  color: #e4e4d0;
+}
+
+/* 휴대폰 인증하기 부터 이메일 인증하기 까지 */
+
+.form-radio-input {
+  margin-right: 20px;
+}
+
+.auth-radio {
+  margin-bottom: 15px;
+}
+
+.auth-input-line {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.auth-input {
+  width: 350px;
+  height: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #f9f7f0;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-bottom: 15px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.auth-input::placeholder {
+  color: #e4e4d0;
+}
+
+.auth-request-btn {
+  font-size: 10px;
+  background-color: #5a5b55;
+  border-radius: 5px;
+  width: 75px;
+  height: 25px;
+}
+
+/* 인증번호 입력하고 인증 버튼 div */
+.auth-typing-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  width: 350px;
+}
+
+.auth-typing-span {
+  font-size: 12px;
+}
+
+.auth-typing-input {
+  outline: none;
+  height: 35px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  margin-left: 15px;
+  border: none;
+  background-color: #f9f7f0;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+}
+
+.auth-btn {
+  font-size: 10px;
+  background-color: #5a5b55;
+  border-radius: 5px;
+  width: 40px;
+  height: 25px;
+  margin-left: 30px;
+}
+
+.form-auth-message,
+.form-auth-num {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-auth-message {
+  margin-top: 15px;
+}
+
+/* 아이디 찾기 버튼을 눌렀을때 나오는 span */
+.idAppend {
+  font-weight: bold;
+  color: black;
+}
+
+/* 아이디 찾기 버튼 */
+.findId-btn {
+  width: 100%;
+  height: 60px;
+  background-color: #9ba97d;
+  border-radius: 5px;
+}

@@ -24,5 +24,11 @@ public interface AuthMapper {
 	 * @return
 	 */
 	int checkAuth(Map<String, String> userInfo);
+
+	/** 인증 한적이 있는지 확인
+	 * @param map
+	 * @return
+	 */
+	int selectAuthKey(Map<String, String> map);
 	
 }

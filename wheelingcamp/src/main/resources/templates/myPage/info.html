@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html
+  lang="ko"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{common/main}"
+>
+  <head>
+    <link rel="stylesheet" href="/css/myPage/info.css">
+  </head>
+  <th:block layout:fragment="main">
+    <div>
+      <div class="myPage-info-div">
+        <div class="myPage-wrap">
+          <div class="myPage-content">
+            <div class="simpleBox myPageBox2">
+              <button
+                type="button"
+                class="btn btn-shoesing btnInfo"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                id="updateProfile"
+              >
+                내정보 수정
+              </button>
+        <a href="#">내가쓴글</a>
+        <a href="#">관심상품</a>
+        <a href="#">주문내역</a>
+        <a href="#">회원탈퇴</a>
+      </div>
+      <div>
+        <img src="/images/icon/person.png" class="profile-icon"/>
+        <input type="file">프로필 사진 변경</input>
+      </div>
+      <div >
+        <span>이름</span>
+        <span th:value="session.loginMember.memberName" > </span>
+        <span>이메일</span>
+        <span th:value="session.loginMember.memberEmail" > </span>
+        <span>전화번호</span>
+        <span th:value="session.loginMember.memberPhone" > </span>
+        <span>적립금</span>
+        
+      </div>
+    </div>
+    <div>
+      <img src="/images/eventBanner/11.banner.png"/>
+    </div>
+    <div>
+      <span>배지모아</span>
+      <img src="/images/sample/reward.png">
+    </div>
+
+    <form
+    action="/user/checkCurrentPw"
+    method="post"
+    name="checkPwForm"
+    id="checkPwForm"
+  >
+    <!-- 비밀번호 입력 모달창 -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              비밀번호 입력
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- 현재 비밀번호 입력-->
+            <div class="update-input-area">
+              현재 비밀번호
+              <input
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+                id="inputPw"
+                name="inputPw"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              취소
+            </button>
+            <button class="btn btn-primary">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  </th:block>
+</html>

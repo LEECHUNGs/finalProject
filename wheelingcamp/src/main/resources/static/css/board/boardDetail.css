@@ -1,0 +1,191 @@
+/* 상세조회 전체 영역 */
+.board-detail{
+  width: 1000px;
+  min-height: 700px;
+  margin: 50px auto;
+  border-bottom:3px solid #9E9C90;
+  position:relative;
+}
+
+
+/* 게시글 제목 */
+.board-title{
+  margin : 0;
+  padding: 20px 0;
+  font-size: 2em;
+  color:#706e63;
+}
+
+.board-title > span{
+  font-size: 16px;
+  color: gray;
+}
+
+
+/* 게시글 헤더 */
+.board-header{
+  padding: 20px 0;
+  border-bottom : 3px solid #9E9C90;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 작성자 영역 */
+.board-writer{
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+/* 프로필 */
+.board-writer > img{
+  width: 40px;
+  height: 40px;
+}
+
+/* 닉네임 */
+.board-writer > span{
+  font-weight: bold;
+  margin-left : 10px;
+}
+
+/* 게시글 정보 */
+.board-info{
+  width: 320px;
+  font-size: 0.8em;
+}
+
+.board-info > p{
+  margin: 0;
+}
+
+.board-info span{
+  width: 120px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.board-detail h5{
+  clear: both;
+  margin: 10px 0;
+}
+
+
+/* 이미지를 감싸는 div */
+.boardImg{
+  width: 25%;
+  height: 240px;
+  float: left;
+  text-align: center;
+}
+
+/* 이미지 */
+.boardImg img{
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* 썸네일만 이미지 크게 */
+.thumbnail{
+  width: 300px;   
+  height: 300px;
+}
+
+/* 다운로드 a태그 */
+.boardImg a{
+  display: block;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* 내용 */
+.board-content{
+  clear: both;
+  padding: 30px 0;
+  margin: 30px 0;
+  font-size: 18px;
+  white-space: pre-wrap;
+  color:#363530
+}
+
+/* 버튼 영역 */
+.board-btn-area{
+  text-align: right;
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  display: flex;
+  column-gap: 15px;
+}
+
+/* 버튼 */
+.board-btn-area button{
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
+  border: 0;
+  background-color: #7b7768;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px 0px #535046;
+  transition: 0.2s all;
+}
+
+.board-btn-area-btn:hover{
+    transform: translateY(10px);
+}
+
+.board-btn-area-btn:hover{
+    box-shadow: 0px 0px 0px 0px black;;
+}
+
+
+
+
+/* 좋아요 */
+.like-area{
+  margin-left: 30px;
+}
+
+#boardLike{
+  font-size: 1.5em;
+  color: red;
+  cursor: pointer;
+}
+
+.update-span{
+  border-left: 3px solid#7a7c63;
+  border-right:3px solid#7a7c63;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.border-detail-span{
+  color: #5c5e4c;
+  text-shadow: 0px 0px 2px  #7a7c63;
+  font-size:18px
+ 
+}
+
+.border-writer-right{
+  display: flex;
+    column-gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.border-writer-right > div{
+  display:flex;
+  column-gap: 10px;;
+  align-items: center;
+  color:#5c5e4c;
+}
+
+.border-writer-right > div > i{
+  font-size:20px;
+  
+}

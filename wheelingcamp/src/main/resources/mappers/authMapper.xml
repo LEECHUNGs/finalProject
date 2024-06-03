@@ -6,19 +6,24 @@
 	<update id="updateAuthKey">
 		UPDATE "AUTH" SET
 		AUTH_KEY = #{authKey}
-		WHERE AUTH_METHOD = #{email}
+		WHERE AUTH_METHOD = #{method}
 	</update>
 	
 	<!-- 인증 번호 삽입 -->
 	<insert id="insertAuthkey">
 		INSERT INTO "AUTH"
-		VALUES(#{authKey}, #{email})
+		VALUES(#{authKey}, #{method})
 	</insert>
 
 	<select id="checkAuth">
 		SELECT COUNT(*) FROM "AUTH"
 		WHERE AUTH_KEY = #{authNum}
 		AND (AUTH_METHOD = #{memberEmail} OR AUTH_METHOD = #{memberPhoneNo})
+	</select>
+	
+	<select id="selectAuthKey">
+		SELECT COUNT(*) FROM "AUTH"
+		WHERE AUTH_METHOD = #{method}
 	</select>
 	
 </mapper>

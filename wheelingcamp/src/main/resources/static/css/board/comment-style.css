@@ -1,0 +1,267 @@
+/*댓글*/
+.comment-write-area {
+  display: flex;
+    min-height: 85px;
+    justify-content: center;
+    margin: 10px auto;
+    width: 1050px;
+}
+
+.comment-write-area > textarea{
+  flex-basis: 75%;
+    margin-right: 10px;
+    resize: none;
+    border-radius: 10px;
+    border: 4px solid #9E9C90;
+    outline: none
+}
+
+.comment-write-area > button{
+  width: 80px;
+  height: 40px;
+  font-weight: bold;
+  border: 0;
+  background-color: #7b7768;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 5px 0px 0px #535046;
+  transition: 0.2s all;
+  position: relative;
+  top: 21px;
+  left: 30px;
+}
+
+.comment-write-area > button:hover{
+   transform: translateY(10px);
+
+}
+
+.comment-write-area > button:hover{
+  box-shadow: 0px 0px 0px 0px black;;
+}
+
+#commentList{
+  padding: 0;
+  list-style: none;
+}
+
+.comment-writer {
+  display: flex;
+  align-items: center;
+}
+
+.comment-writer > img{
+  width: 90px;
+    height: 90px;
+    border-radius: 20px;
+}
+
+.comment-writer > span{
+   font-weight: bold;
+   margin-left : 10px;
+}
+
+.comment-date{
+  font-size: 0.8em;
+  color: #aaa;
+  margin-left:10px;
+}
+
+
+.comment-btn-area { 
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 버튼 */
+.comment-btn-area button{
+   width: 50px;
+   height: 30px;
+  margin-left: 10px;
+
+   font-weight: bold;
+   border: 0;
+   background-color: #455ba8;
+   color : white;
+
+   cursor: pointer;
+}
+
+.comment-btn-area button:hover{
+   background-color: white;
+   color : #455ba8;
+   border: 2px solid #455ba8;
+}
+
+.update-textarea{
+  width: 100%;
+   height: 90px;
+   resize: none;
+}
+
+
+
+
+.child-comment{
+  padding-left : 50px;
+  position: relative;
+  margin-top:50px;
+}
+
+/* 
+.child-comment:before {
+  content: "\f0a4";
+  font-family: "FontAwesome";
+  
+  position : absolute;
+  left : 0;
+  top : 35px;
+} */
+
+
+/* 답글 */
+.commentInsertContent{
+  width: 100%;
+   height: 90px;
+   resize: none;
+   margin-top : 20px;
+}
+
+
+
+/* 댓글 내용 */
+.comment-content{
+  white-space: pre-wrap; /* 작성된 문자열 모양 그대로(공백 유지) */
+}
+
+.commentArea-comment{
+  width: 880px;
+    margin: 0 auto;
+    color: #45443e;
+    display:flex;
+    column-gap: 5px;
+}
+
+.comment-list-area{width: 1050px;
+  margin: 60px auto;
+  border: 1px solid grey;
+  border-radius: 10px;
+  outline: none;
+  padding: 50px;}
+
+.comment-user-section{
+  display: flex;
+    column-gap: 30px;
+    height: 100px;
+}
+
+.comment-user-section-first-div{
+  border-radius: 10px;
+    flex-basis: 10%;
+}
+.comment-user-section-second-div{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 85%;
+  position: relative;
+  row-gap: 10px;
+  bottom: 30px;
+  position:relative;
+  height: 140px;
+}
+
+.comment-user-section-first-div > img{
+  border-radius: 100px;
+}
+
+
+
+
+    .user-section-second-div-comment-content{
+      background: #dbdbdb;
+      border-radius: 10px;
+      /* padding-left: 30px; */
+      color: #5A5B55;
+      /* height: 87px; */
+      font-size: 14px;
+      padding: 20px;
+      flex-basis: 100%;
+    }
+
+    .comment-user-section li, p {
+      line-height: 0 !important;
+    }
+
+   
+
+    .user-section-first-div-comment-content{
+      height: 50px;
+    }
+
+   
+
+    .update-btn{
+      position: absolute;
+      bottom: 100px;
+      right: 100px;
+      width: 40px;
+      height: 30px;
+      background: #938F7D;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0px 5px 0px 0px #4b493f;
+      transition: 0.2s all;
+    }
+
+    button{
+      line-height:0px;
+    }
+
+    .delete-btn{
+      position: absolute;
+      bottom: 100px;
+      right: 50px;
+      width: 40px;
+      height: 30px;
+      background: #938F7D;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0px 5px 0px 0px #4b493f;
+      transition: 0.2s all;
+    }
+
+.update-btn:hover{
+  transform: translateY(10px);
+}
+.update-btn:hover{
+  box-shadow: 0px 0px 0px 0px black;
+}
+
+.delete-btn:hover{
+  transform: translateY(10px);
+}
+.delete-btn:hover{
+  box-shadow: 0px 0px 0px 0px black;
+}
+
+
+.comment-child-btn{
+  position: absolute;
+      bottom: 100px;
+      right: 0px;
+      width: 40px;
+      height: 30px;
+      background: #938F7D;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0px 5px 0px 0px #4b493f;
+      transition: 0.2s all;
+}
+
+.comment-child-btn:hover{
+  transform: translateY(10px);
+}
+.comment-child-btn:hover{
+  box-shadow: 0px 0px 0px 0px black;
+}
