@@ -43,26 +43,26 @@ public class FilterConfig {
 	 * 
 	 * @return
 	 */
-	@Bean
-	public FilterRegistrationBean<LoggedOutFilter> loggedOutFilter() {
-		// Filter
-		FilterRegistrationBean<LoggedOutFilter> filter = new FilterRegistrationBean<>();
-
-		filter.setFilter(new LoggedOutFilter());
-
-		/* 로그인 하지 않으면 접근할 수 없는 주소 */
-		String[] filteringURL = { "/member/myPage" };
-
-		// Array.asList(filteringURL) == filteringURL을 List로
-		filter.setUrlPatterns(Arrays.asList(filteringURL));
-
-		// 필터 이름 설정
-		filter.setName("logOutFilter");
-
-		// 필터 순서 지정
-		filter.setOrder(1);
-
-		return filter;
-	}
+//	@Bean
+//	public FilterRegistrationBean<LoggedOutFilter> loggedOutFilter() {
+//		// Filter
+//		FilterRegistrationBean<LoggedOutFilter> filter = new FilterRegistrationBean<>();
+//
+//		filter.setFilter(new LoggedOutFilter());
+//
+//		/* 로그인 하지 않으면 접근할 수 없는 주소 */
+//		String[] filteringURL = { "/member/myPage" };
+//
+//		// Array.asList(filteringURL) == filteringURL을 List로
+//		filter.setUrlPatterns(Arrays.asList(filteringURL));
+//
+//		// 필터 이름 설정
+//		filter.setName("logOutFilter");
+//
+//		// 필터 순서 지정
+//		filter.setOrder(1);
+//
+//		return filter;
+//	}
 
 }

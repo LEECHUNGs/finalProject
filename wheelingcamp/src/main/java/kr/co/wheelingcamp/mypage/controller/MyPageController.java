@@ -3,24 +3,28 @@ package kr.co.wheelingcamp.mypage.controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import groovy.util.logging.Slf4j;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.wheelingcamp.member.model.dto.Member;
 import kr.co.wheelingcamp.mypage.model.service.MyPageService;
 import lombok.RequiredArgsConstructor;
 
+@SessionAttributes({"loginMember"})
 @Controller
-@Slf4j
+@lombok.extern.slf4j.Slf4j
 @RequiredArgsConstructor
 @RequestMapping("myPage")
 public class MyPageController {
@@ -28,8 +32,14 @@ public class MyPageController {
 	private final MyPageService service;
 	 
 	//마이페이지 들어가기
-	@RequestMapping("info")
-	public String myPageInfo(){
+	@GetMapping("info")
+	public String myPageInfo(
+			@SessionAttribute("loginMember") Member loginMember
+			//Model model
+			){
+		
+		log.info("??? : {}", loginMember);
+		//model.addAttribute("loginMember", loginMember);
 		
 		return "myPage/info";
 	}
@@ -111,6 +121,5 @@ public class MyPageController {
 		return "myPage/profile";
 	}
 
-	
-	
+
 }

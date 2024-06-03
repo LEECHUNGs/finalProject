@@ -3,6 +3,7 @@ package kr.co.wheelingcamp.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -149,7 +150,7 @@ public class MemberController {
 		}
 
 		model.addAttribute("loginMember", loginMember);
-
+		
 		return "redirect:/";
 	}
 
@@ -213,7 +214,8 @@ public class MemberController {
 		}
 
 		model.addAttribute("loginMember", loginMember);
-
+		System.out.println(loginMember);
+		
 		return "redirect:/";
 	}
 
