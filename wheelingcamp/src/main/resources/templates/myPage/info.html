@@ -9,104 +9,195 @@
     <link rel="stylesheet" href="/css/myPage/info.css">
   </head>
   <th:block layout:fragment="main">
-    <div>
-      <div class="myPage-info-div">
-        <div class="myPage-wrap">
-          <div class="myPage-content">
-            <div class="simpleBox myPageBox2">
-              <button
-                type="button"
-                class="btn btn-shoesing btnInfo"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                id="updateProfile"
-              >
-                내정보 수정
-              </button>
+    
+    <h3 class="myPage-title"> > 마이페이지</h3>
+    <div class="myPage-div">
+      <!-- 마이페이지 메뉴바 -->
+      <div class="myPage-menu">
+        <button
+          type="button"
+          class="btn-profile"
+          data-bs-toggle="modal"
+          data-bs-target="#profileModal"
+          id="profileBtn"
+        >
+          내정보 수정
+        </button>
         <a href="#">내가쓴글</a>
         <a href="#">관심상품</a>
         <a href="#">주문내역</a>
-        <a href="#">회원탈퇴</a>
+        <button type="button" class="btn-secession" data-bs-toggle="modal" data-bs-target="#secessionModal">
+          회원탈퇴
+        </button>
       </div>
-      <div>
-        <img src="/images/icon/person.png" class="profile-icon"/>
-        <input type="file">프로필 사진 변경</input>
-      </div>
-      <div >
-        <span>이름</span>
-        <span th:value="session.loginMember.memberName" > </span>
-        <span>이메일</span>
-        <span th:value="session.loginMember.memberEmail" > </span>
-        <span>전화번호</span>
-        <span th:value="session.loginMember.memberPhone" > </span>
-        <span>적립금</span>
+
+      <!-- 마이페이지 프로필 변경 -->
+      <form action="profileImg" class="profileImgForm" method="POST" name="profileImgForm" id="profileImgForm" enctype="multipart/form-data">
+        <div class="myPage-profileImg-area">
+          <span id="deleteImage">X</span>
+          <img src="/images/icon/person.png">
+          <!-- <img th:src="${session.loginMember.profileImg}"
+               class="profileImg"/> -->
+        </div>
         
+        <div class="profileImg-btn-area">
+          <input type="file" name="profileImg" id="imageInput" accept="image/*">
+          <button id="profileImgBtn">변경하기</button>
+        </div>
+      </form>
+
+      <!-- 마이페이지 회원 정보(이름,이메일,전화번호, 적립금) -->
+      <div class="myPage-info">
+        <h3>아이디</h3>
+        <span th:text="${session.loginMember.memberId}" > </span>
+        <h3>이름</h3>
+        <span th:text="${session.loginMember.memberName}" > </span>
+        <h3>이메일</h3>
+        <span th:text="${session.loginMember.memberEmail}" > </span>
+        <h3>전화번호</h3>
+        <span th:text="${session.loginMember.memberPhoneNo}" > </span>
+        <h3>적립금</h3>    
       </div>
     </div>
-    <div>
+
+    <!-- 배너 -->
+    <div class="myPage-banner">
       <img src="/images/eventBanner/11.banner.png"/>
     </div>
-    <div>
+    <div class="myPage-reward">
       <span>배지모아</span>
       <img src="/images/sample/reward.png">
     </div>
 
+    <!-- 현재 비밀번호 입력 모달창 form -->
     <form
-    action="/user/checkCurrentPw"
+    action="checkPw"
     method="post"
     name="checkPwForm"
     id="checkPwForm"
-  >
-    <!-- 비밀번호 입력 모달창 -->
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">
-              비밀번호 입력
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- 현재 비밀번호 입력-->
-            <div class="update-input-area">
-              현재 비밀번호
-              <input
-                type="password"
-                placeholder="비밀번호를 입력해주세요"
-                id="inputPw"
-                name="inputPw"
-              />
+      <!-- 비밀번호 입력 모달창 -->
+      <div
+        class="modal fade"
+        id="profileModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="profileModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="profileModalLabel">
+                비밀번호 입력
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- 현재 비밀번호 입력-->
+              <div class="pw-area">
+                현재 비밀번호
+                <input
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  id="inputPw"
+                  name="inputPw"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                취소
+              </button>
+              <button class="btn btn-primary">확인</button>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              취소
-            </button>
-            <button class="btn btn-primary">확인</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- 회원탈퇴 모달창 -->
+    <div class="modal fade" id="secessionModal" tabindex="-1" aria-labelledby="secessionModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="secessionModalLabel">회원탈퇴</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <h1>회원탈퇴 이용규약</h1>
+            <br/>
+        
+              <br/>
+              제1조 (회원탈퇴에 따른 제한)
+              <br/><br/>
+                “회원”이 탈퇴하는 경우 3개월간 재가입이 제한됩니다. 다만 “고객사”가 “회사”에 “회원”의 재가입을 요청하는 경우에는 3개월 이내에도 재가입이 가능합니다.
+                “회원”이 탈퇴하는 경우, “회원 “이 보유한 쿠폰, 마일리지는 모두 삭제됩니다.
+                “회원”의 미결제 금액 및 환불 금액이 존재하는 경우, 탈퇴 후 반환 처리됩니다.
+                제2조 (개인정보 및 위치정보 보유)
+                “회원”이 이용계약을 해지하는 경우, “회사”는 관련법령 및 개인정보처리방침에 따라 “회원”의 개인정보 등을 보유하는 경우를 제외하고 해지 즉시 “회원”의 모든 정보를 삭제합니다. 
+                <br/><br/>
+                다만 “회원”이 탈퇴하거나 자격을 상실할 경우에도 불구하고, “회사”는 [회사 내부 방침], [관계법령]에 따라 아래의 기간동안 개인정보 및 위치정보를 보유할 수 있습니다.
+                <br/><br/><br/>
+                [회사 내부 방침에 의한 정보 보유]
+                <br/><br/>
+                개인화 프로파일은 서비스 이용 종료 후 5년 또는 동의 철회 시까지 (단, 관계법령의 별도의 규정이 명시되어 있는 경우 그 기간을 따름)
+                농기계 작동/상태 정보, 사용 이력 정보, 진단 정보, 소모품 관리 정보 및 개인 위치 정보는 수집 · 이용 목적 달성 시 또는 동의 철회 시까지
+                요금 결제 및 정산이 완료되지 않은 경우 요금 결제 및 정산 완료 시까지
+                고객의 불만/민원 처리, 소송 등 분쟁이 진행 중이거나 예상되는 경우 처리 완료 시까지
+                수집된 개인 정보의 마케팅 및 광고를 위한 이용은 회원 탈퇴 또는 동의 철회 시까지
+                <br/><br/><br/>
+                [관계법령에 의한 정보 보유]
+                <br/><br/>
+                전자상거래 등에서의 「소비자 보호에 관한 법률」 에 따른 계약 내용 및 이행 등 거래에 관한 기록
+                <br/>
+                계약 또는 청약 철회 등에 관한 기록 : 5년
+                <br/>
+                대금 결제 및 재화 등의 공급에 관한 기록 : 5년
+                <br/>
+                소비자의 불만 또는 분쟁 처리에 관한 기록 : 3년
+                <br/>
+                「상법」 에 따른 회사의 상업 장부와 영업에 관한 중요 서류 및 전표 등에 관련된 정보
+                상업 장부 및 영업에 관한 중요 서류 : 10년
+              <br/>
+                전표 또는 이와 유사한 서류: 5년
+                <br/><br/>
+                「국세기본법」, 「법인세법」 에 따른 모든 거래에 관한 장부 및 증빙 서류와 관련된 정보 : 그 거래 사실이 속하는 과세 기간에 대한 해당 국세의 법정 신고 기한이 지난 날부터 5년
+                「부가가치세법」 에 따른 장부와 교부한 세금 계산서 또는 영수증 : 5년
+                「신용정보의 이용 및 보호에 관한 법률」 에 따른 신용 정보의 수집·처리 및 이용 등에 관한 기록 : 3년
+                개인정보를 제공받은 제3자는 제공 목적을 달성하거나 이용자의 철회 요청이 있더라도, 내부보고, 감사 및 검사,
+                비용 정산 (청구) 등 계약이행, 분쟁 대비를 위해 필요한 정보는 서비스 이용 종료 후 6개월까지, 미이행·분쟁이 계속될 경우
+                이행 완료·분쟁 해결 시까지 개인정보를 보유·이용할 수 있으며, 아래의 제공받는 자의 보유 및 이용기간과 상법 등 관련 법령에 특별한 규정에 따른 기간 동안 개인정보 및 위치정보를 보관할 수 있습니다. 
+        
+          </div>
+          <div class="modal-footer"> 
+            <form action="secession" method="POST" id="secessionForm">
+              동의<input type="checkbox" id="agree"/> 
+              <br>
+              <label>
+              비밀번호 확인 <input type="password" placeholder="현재 비밀번호를 입력해주세요" id="currentPw">
+              <br>
+              <span id="PwMessage"></span>
+              </label>
+              <br>
+              <br>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+              <button class="btn btn-primary" id="secessionBtn">탈퇴</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
 
   </th:block>
 </html>
